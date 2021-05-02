@@ -8,7 +8,7 @@ driver.maximize_window()
 driver.get("https://kaushal1014.github.io/")
 time.sleep(5)
 
-text=["ass","fuck"]
+text=["ass","idiot"]
 for words in text:
     check=words 
 
