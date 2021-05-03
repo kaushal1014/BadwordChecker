@@ -3,11 +3,15 @@ import time
 from selenium.common.exceptions import NoSuchElementException
 
 url=input("Enter url:")
-if "https://www." not in url:
+if "https://www." or "https://" in url:
     https=url
+    
+    
+    
 else:
     https="https://www."+url
-
+    print(https)
+"""
 good=input("Enter the good words:")
 bad=input("Enter the bad words:")
 good_trimed=good.rstrip()
@@ -15,8 +19,10 @@ bad_trimed=bad.rstrip()
 good_list = list(good_trimed.split(" ")) 
 bad_list = list(bad_trimed.split(" ")) 
 print(good_list)
-print(bad_list)
+print(bad_list)"""
 
+good_list=["giraffe"," elephant"," onion", "peanut butter", "myexample 123"]
+bad_list=["The Committee shall monitor and review technological and legislative changes affecting intellectual property policy and shall report to relevant faculty and administrative bodies, when such changes affect existing policies.","The committee shall serve as a forum for the receipt and discussion of proposals to change existing institutional policy and/or to provide recommendations for contract negotiations"]
 for good in good_list:
     good_words=good
 
@@ -26,7 +32,7 @@ for bad in bad_list:
 driver = webdriver.Chrome(executable_path="C:\\pythonProjects\\WordChecker - Copy\\chromedriver.exe")
 
 driver.maximize_window()
-driver.get(https)
+driver.get(url)
 time.sleep(5)
 
 
