@@ -2,23 +2,39 @@ from selenium import webdriver
 import time
 from selenium.common.exceptions import NoSuchElementException
 
-driver = webdriver.Chrome(executable_path="path to chrome executable")
+
+good=input("Enter the good words:")
+bad=input("Enter the bad words:")
+good_trimed=good.rstrip()
+bad_trimed=bad.rstrip()
+good_list = list(good_trimed.split(" ")) 
+bad_list = list(bad_trimed.split(" ")) 
+print(good_list)
+print(bad_list)
+
+for good in good_list:
+    good_words=good
+
+for bad in bad_list:
+    bad_words=bad
+
+driver = webdriver.Chrome(executable_path="C:\\pythonProjects\\WordChecker - Copy\\chromedriver.exe")
 
 driver.maximize_window()
-driver.get("https://www.example.com")
+driver.get("https://www.noswearing.com/dictionary")
 time.sleep(5)
-
-text=["the","words","you","want","to","find"]
-for words in text:
-    check=words 
 
 
 body=driver.find_element_by_css_selector("body")
 time.sleep(5)
 content=(body.text)
-if any(check in content for check in text):
-    print("words found")
+if any(good_words in content for good_words in good_list):
+    print("good words found")
 else:
-    print("No words found")
+    print("No good words found")
+if any(bad_words in content for bad_words in bad_list):
+    print("bad words found")
+else:
+    print("No bad words found")
 driver.close()
 
